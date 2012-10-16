@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // AccessInternet.java
 // GUI: settings_change.xml
 // Author: Denis O'Connor
-// Last modified: 28/6/12
+// Last modified: 02/8/12
 // Gives the user the option to connect to the internet by Wi-Fi, Mobile Internet or not at all
 // Internet access is required to use the Currency Conversion facility
 
@@ -10,6 +10,8 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -44,13 +46,22 @@ public class AccessInternet extends Activity implements OnClickListener {
 //		set on click listeners
 		attention.setVisibility(View.VISIBLE);
 		attention.setText("ATTENTION!");
-		main.setText("You need to be connected to the internet to access this facility.\nDo you wish to connect to in the invernet via:");
+		main.setText("You need to be connected to the internet to access this facility.\nDo you wish to connect to in the invetnet via:");
 		confirm.setOnClickListener(this);
 		cancel.setOnClickListener(this);
 		wifi.setText("Wi-Fi Connection");
 		wifi.setOnClickListener(this);
-		mobile.setText("Mobile Connection");
-		mobile.setOnClickListener(this);
+		
+//		Check to see if mobile internet is available
+		ConnectivityManager connManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+		NetworkInfo mMobile = connManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+		if(mMobile != null){
+			mobile.setText("Mobile Connection");
+			mobile.setOnClickListener(this);
+		}else{
+			mobile.setVisibility(View.GONE);
+		}
+		
 		
 	}//	END onCreate()
 
@@ -76,7 +87,8 @@ public class AccessInternet extends Activity implements OnClickListener {
 //				Log.d(TAG, "Wi-Fi enabled");		//	TESTING
 				finish();
 				
-			}else if (mobile.isChecked()){Intent mobileIntent=new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS);
+			}else if (mobile.isChecked()){
+				Intent mobileIntent=new Intent(Settings.ACTION_DATA_ROAMING_SETTINGS);
 				ComponentName cName = new ComponentName("com.android.phone","com.android.phone.Settings");
 				mobileIntent.setComponent(cName);
 				startActivity(mobileIntent);

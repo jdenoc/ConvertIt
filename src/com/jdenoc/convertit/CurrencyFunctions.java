@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // Currency.java
 // GUI: n/a
 // Author: Denis O'Connor
-// Last modified: 05/7/12
+// Last modified: 02/8/12
 // Contains functions for Currency conversions
 
 import java.io.StringReader;
@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import android.app.Activity;
-//import android.util.Log;		//	TESTING
+import android.util.Log;		//	TESTING
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -39,7 +39,7 @@ public class CurrencyFunctions extends Activity{
 	private String convertFrom, convertTo;
 	private double value;
 	private boolean fullCurrency;
-//	private final String TAG = "CurrencyModule";		//	TESTING
+	private final String TAG = "CurrencyModule";		//	TESTING
 	
 	public CurrencyFunctions(){
 //		Constructor - DOES NOTHING
@@ -268,16 +268,16 @@ public class CurrencyFunctions extends Activity{
 	}//	END processRateAndConvert()
 	
 	public int checkInternetConnectivity(boolean fromSettings, ConnectivityManager connManager, WifiManager wifiManager, Context goesTo){
-		int[] returns = {-1,0,1};
+		int[] returns = {-1,0,1};		// -1:runs AccessInternet.java , 0:Does Nothing , 1:runs CurrencyConvertIt.java
 		
 	    NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 	    NetworkInfo mMobile = connManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 	    
 		if(wifiManager.isWifiEnabled()){
-//			Log.d(TAG, "Wi-Fi enabled");		//	TESTING
+			Log.d(TAG, "Wi-Fi enabled");		//	TESTING
 			//if wi-fi connected
 			if (mWifi.isConnected()) {
-//				Log.d(TAG, "Wi-Fi connected");		//	TESTING
+				Log.d(TAG, "Wi-Fi connected");		//	TESTING
 				if(!fromSettings){
 					return returns[2];		// Runs CurrencyConvertIt.java
 				}else{
@@ -289,15 +289,24 @@ public class CurrencyFunctions extends Activity{
 				return returns[1];		// Does nothing
 			}
 			
-	    }else if (mMobile.isConnected()) {
-//	        //if mobile internet is connected
-//	    	Log.d(TAG, "Mobile enabled");		//	TESTING
-	    	if(fromSettings){
-	    		Toast.makeText(goesTo, "Mobile internet access is already available", Toast.LENGTH_SHORT).show();
-	    		return returns[1];		// Does nothing
-	    	}else{
-	    		return returns[2];		// Runs CurrencyConvertIt.java
-	    	}
+	    }else if(mMobile != null){
+//	    	if mobile internet is available
+//	    	Log.d(TAG, "Mobile Access is availble");
+			if(mMobile.isConnected()) {
+//	        	if mobile internet is connected
+//	    		Log.d(TAG, "Mobile enabled");		//	TESTING
+		    	if(fromSettings){
+		    		Toast.makeText(goesTo, "Mobile internet access is already available", Toast.LENGTH_SHORT).show();
+		    		return returns[1];		// Does nothing
+		    	}else{
+		    		return returns[2];		// Runs CurrencyConvertIt.java
+		    	}
+		    	
+		    }else{
+//		    	Log.d(TAG, "Mobile NOT enabled");		//	TESTING
+		    	return returns[0];		// Runs AccessInternet.java
+		    }
+			
 	    }else{
 //	    	Log.d(TAG, "Wi-Fi & Mobile NOT enabled");		//	TESTING
 	    	return returns[0];		// Runs AccessInternet.java
