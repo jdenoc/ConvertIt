@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // TimeFunctions.java
 // GUI: n/a
 // Author: Denis O'Connor
-// Last Modified: 28/6/12
+// Last Modified: 02/8/12
 // Contains functions to aid in finding out time in different time zones
 
 import java.util.ArrayList;
@@ -48,10 +48,24 @@ public class TimeFunctions {
 //		Obtains the current time on device. Displays in 12 hour clock format (i.e.: 3:15 p.m.)
 		String dateANDtime = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 //		Log.d(TAG, "Time is "+dateANDtime);		//	TESTING
-		String[] timeElements = dateANDtime.split(" ");
-		return formatTime(Integer.parseInt(timeElements[3].substring(0, timeElements[3].indexOf(':'))), 
-				Integer.parseInt(timeElements[3].substring(timeElements[3].indexOf(':')+1,timeElements[3].lastIndexOf(':'))), 
-				timeElements[4]
+		
+		String[] timeElements = dateANDtime.split(" "); 
+		String period;
+		int hour = Integer.parseInt(timeElements[3].substring(0, timeElements[3].indexOf(':')));
+		if(timeElements.length > 4){
+			period = timeElements[4];
+		}else{
+			if(hour >= 12 && hour != 24){
+				hour -= 12;
+				period = "p.m.";
+			}else{
+				period = "a.m.";
+			}
+		}
+		return formatTime(
+				hour,
+				Integer.parseInt(timeElements[3].substring(timeElements[3].indexOf(':')+1,timeElements[3].lastIndexOf(':'))),
+				period
 				);
 	}// END getCurrentTime()
 	
@@ -132,10 +146,16 @@ public class TimeFunctions {
 			}else if((period.equals("a.m.")) && (hour == 12)){
 				hour -= 12;
 			}
+			if(hour == 24){
+				hour = 0;
+			}
 			period = "";
 			
 		}else{			// to be set to 12hour format
-			if(hour > 12){
+			if(hour == 24 || hour == 0){
+				hour = 12;
+				period = "a.m.";
+			}else if(hour > 12){
 				hour -= 12;
 				period = "p.m.";
 			}else{

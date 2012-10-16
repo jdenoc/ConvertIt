@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jdenoc.convertit"
-    android:versionCode="4"
+    android:versionCode="5"
     android:versionName="@string/version" >
 
     <uses-sdk android:minSdkVersion="8" />
@@ -17,7 +17,7 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:debuggable="false"  >
+        android:debuggable="true"  >
 <!-- Start App with Splash -->
         <activity
             android:label="@string/app_name"
