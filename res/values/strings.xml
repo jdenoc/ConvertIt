@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="version">1.1</string>
+    <string name="app_name">ConvertIt</string>
+    <string name="con1">Convert To:</string>
+    <string name="con2">Convert From:</string>
+    <string name="tRegion">Region:</string>
+    <string name="tCity">City:</string>
+    <string name="tZone">Time Zone:</string>
+    <string name="currencySite">http://themoneyconverter.com/rss-feed/</string>
+    <string name="featureNA">This feature is not yet available.</string>
+    <string name="newSetting">Press the "Menu" button, then Reset for new setting to take effect</string>
+	    
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Array for Length -->
+    <string-array name="lengthArray">
+        <item>Inch</item>
+        <item>Foot</item>
+        <item>Yard</item>
+        <item>Mile</item>
+        <item>MM</item>		<!-- Millimetre -->
+        <item>CM</item>		<!-- Centimetre -->
+        <item>M</item>		<!-- Meter -->
+        <item>KM</item>		<!-- Kilometre -->
+        <item>NauticalMile</item>
+    </string-array>
+    
+    <!-- Array for Volume -->
+    <string-array name="volumeArray">
+        <item>Fl.Oz(US)</item>
+		<item>Fl.Oz(UK)</item>
+		<item>Pint(US)</item>
+		<item>Pint(UK)</item>
+		<item>Quart(US)</item>
+		<item>Quart(UK)</item>
+		<item>Gallon(US)</item>
+		<item>Gallon(UK)</item>
+		<item>Millilitre</item>
+		<item>Litre</item>
+    </string-array>
+    
+    <!-- Array for Mass -->
+	<string-array name="massArray">
+	    <item>Milligram</item>
+	    <item>Gram</item>
+	    <item>Kilogram</item>
+	    <item>Pound</item>
+	    <item>Ounce</item>
+	    <item>Ton(US)</item>	<!-- short ton --> 
+	    <item>Ton(UK)</item>	<!-- long ton -->
+	    <item>MetricTon</item>
+	</string-array>
+	
+	<!-- Array for Temperatures -->
+	<string-array name="tempArray">
+	    <item>Celsius (\u00B0C)</item>
+	    <item>Fahrenheit (\u00B0F)</item>
+	    <item>Kelvin (\u00B0K)</item>
+	</string-array>
+	
+	<!-- Array for Speed -->
+	<string-array name="speedArray">
+	    <item>m/s</item>	<!-- Meter per Second -->
+		<item>km/h</item>	<!-- Kilometer per Hour -->
+	    <item>mph</item>	<!-- Mile per Hour -->
+	    <item>Knots</item>	<!-- Knots (based on Nautical mile)-->
+	    <item>ft/s</item>	<!-- Feet per Second -->
+	    <item>Mach</item>	<!-- Mach (Speed of sound) -->
+	</string-array>
+    
+    
+</resources>

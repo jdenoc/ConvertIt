@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <!-- TITLE LINE -->
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical" >
+	    <TextView
+			android:text="Colour"
+	        android:textSize="36dp"
+	        android:textStyle="bold"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/textColor"
+	        />
+	    <TextView 
+	        android:text="HEX to RGB"
+	        android:textSize="30dp"
+	        android:textStyle="bold"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/textColor"/>
+    </LinearLayout>
+	
+	<LinearLayout
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="10dp" >
+	    <!-- INPUT Line -->
+    	<LinearLayout
+    	    android:orientation="horizontal"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginRight="10dp"
+		    android:gravity="left">
+	    	<TextView
+		        android:text="HEX:"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:paddingRight="10dp"
+		        android:paddingLeft="20dp"
+		        android:textSize="20dp"
+		        android:textColor="@color/textColor"
+		        android:textStyle="bold"
+		        />
+	        <EditText
+	            android:id="@+id/hexCode"
+	            android:inputType="textCapCharacters"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            />
+        </LinearLayout>
+        <!-- Colour Canvas -->
+		<LinearLayout
+			android:id="@+id/colorCanvas"
+            android:layout_margin="10dp"
+            android:layout_width="fill_parent"
+	   		android:layout_height="100dp"
+	   		android:gravity="bottom"
+	   		android:background="#FFFFFF" >
+        	<TextView 
+	            android:id="@+id/colorID"
+		       	android:text="ABCD"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_column="1"
+		        android:gravity="center"
+		        android:textSize="20dp"
+		        android:textColor="@color/textColor"
+		        android:textStyle="bold"
+		        android:background="@color/mainBG"
+		        />
+        </LinearLayout>
+	</LinearLayout>
+    
+    <LinearLayout 
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+		<!-- Confirm CONVERT LINE -->
+        <ImageButton 
+            android:id="@+id/doConversion"
+            android:src="@drawable/convert_it"
+            android:background="@drawable/button_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</LinearLayout>

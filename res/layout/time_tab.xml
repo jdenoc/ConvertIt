@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    android:orientation="vertical" >
+    <!-- TITLE LINE -->
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+	    <TextView
+			android:text="Time"
+	        android:textSize="36dp"
+	        android:textStyle="bold"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/textColor"
+	        />
+    </LinearLayout>
+    <!-- END TITLE LINE -->
+	<!-- TABLE FOR USER DEFINED TIME -->
+	<TableLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" >
+	    <TableRow android:gravity="center" >
+        	<TextView 
+		    	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:gravity="left"
+	        	android:paddingLeft="10dp"
+		    	android:text="Time"
+		    	android:textStyle="bold"
+		    	android:textColor="@color/textColor"
+		    	android:textSize="16dp"
+		    	/>
+			<TextView 
+		    	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+		    	android:text="Time Zone"
+		    	android:textStyle="bold"
+		    	android:textColor="@color/textColor"
+		    	android:textSize="16dp"
+		    	android:gravity="right"
+		    	android:paddingRight="10dp"
+		    	/>
+			
+		</TableRow>
+		<TableRow android:gravity="center" >
+			<TextView 
+			    android:id="@+id/currentTime"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:gravity="left"
+	        	android:paddingLeft="10dp"
+		    	android:text="n/a"
+		    	android:textColor="@color/textColor"
+		    	android:textSize="16dp"
+		    	/>
+			<TextView 
+			    android:id="@+id/currentTimeZone"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:gravity="right"
+	        	android:paddingRight="10dp"
+		    	android:text="n/a"
+		    	android:textColor="@color/textColor"
+		    	android:textSize="16dp"
+		    	/>
+		</TableRow>
+		<TableRow android:gravity="center" >
+		    <Button
+				android:id="@+id/setTime"
+	            android:text="Change Time"
+	            android:layout_width="wrap_content"
+	            android:layout_height="fill_parent"
+	            />
+	        <Button
+	            android:id="@+id/setZone"
+	            android:text="Change Time Zone"
+	            android:layout_width="wrap_content"
+	            android:layout_height="fill_parent"
+	            />
+		</TableRow>
+	</TableLayout>
+	<!-- END TABLE FOR USER DEFINED TIME -->
+	<!-- SPINNERS TABLE -->
+	<TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="10dp" >
+        <!-- Spinner LINE 1 -->
+        <TableRow >
+            <TextView
+                android:id="@+id/timeLable1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="left"
+	            android:textColor="@color/textColor"
+	            android:textSize="18dp"
+	            android:textStyle="bold"
+	            android:paddingRight="7dp" />
+			<Spinner 
+	            android:id="@+id/spinnerTime1"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+	            />
+		</TableRow>
+		<!-- Spinner LINE 2 -->
+        <TableRow >
+            <TextView 
+	            android:id="@+id/timeLable2"
+	            android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="left"
+	            android:textSize="18dp"
+		        android:textColor="@color/textColor"
+		        android:textStyle="bold"
+		        android:paddingRight="7dp" />
+            <Spinner 
+	            android:id="@+id/spinnerTime2"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+	            />
+        </TableRow>
+	</TableLayout>
+	<!-- END SPINNERS TABLE -->
+	<!-- Convert -->
+    <LinearLayout 
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+		<!-- Confirm CONVERT LINE -->
+        <ImageButton 
+            android:id="@+id/doConversion"
+            android:src="@drawable/convert_it"
+            android:background="@drawable/button_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+    <!-- END convert -->
+    
+
+</LinearLayout>

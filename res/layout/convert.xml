@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/mainBG"
+    android:padding="10dp" >
+
+    <!-- TITLE LINE -->
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+	    <TextView
+			android:text="Convert Title"
+	        android:textSize="36dp"
+	        android:textStyle="bold"
+	        android:id="@+id/convertTitle"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="@color/textColor"
+	        />
+    </LinearLayout>
+	<!-- INPUT LINE -->
+	<LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="20dp" >
+        <TextView
+	        android:text="Input:"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingRight="10dp"
+	        android:paddingLeft="5dp"
+	        android:textSize="20dp"
+	        android:textColor="@color/textColor"
+	        android:textStyle="bold"
+	        />
+        <EditText
+            android:id="@+id/convertInput"
+            android:numeric="decimal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+    
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+        <!-- Spinner LINE 1 -->
+        <TableRow >
+            <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="left"
+	            android:text="@string/con2"
+	            android:textColor="@color/textColor"
+	            android:textSize="18dp"
+	            android:textStyle="bold"
+	            android:paddingRight="7dp" />
+			<Spinner 
+	            android:id="@+id/spinnerFrom"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+	        	android:prompt="@string/con2"
+	            />
+		</TableRow>
+		<!-- Spinner LINE 2 -->
+        <TableRow >
+            <TextView 
+	            android:text="@string/con1"
+	            android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+	            android:textSize="18dp"
+		        android:textColor="@color/textColor"
+		        android:textStyle="bold"
+		        />
+            <Spinner 
+	            android:id="@+id/spinnerTo"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="wrap_content"
+	        	android:prompt="@string/con1"
+	            />
+        </TableRow>
+	</TableLayout>
+    <LinearLayout 
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+		<!-- Confirm CONVERT LINE -->
+        <ImageButton 
+            android:id="@+id/doConversion"
+            android:src="@drawable/convert_it"
+            android:background="@drawable/button_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/mainBG" >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="Please select a Convertsion method"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:textColor="#000000"/>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp" >
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TableRow 
+                android:gravity="center_horizontal">
+				<ImageButton
+		            android:id="@+id/menuCur"
+		            android:src="@drawable/ic_currency"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="10dp"
+		            android:padding="7dp" />
+			    <ImageButton
+		            android:id="@+id/menuTemp"
+		            android:src="@drawable/ic_temp"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="10dp"
+		            android:padding="7dp" />
+		    </TableRow>
+		    <TableRow
+				android:gravity="center_horizontal">
+		        <ImageButton 
+		            android:id="@+id/menuLen"
+		            android:src="@drawable/ic_length"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="12dp"
+		            android:padding="7dp" />
+				<ImageButton
+		            android:id="@+id/menuVol"
+		            android:src="@drawable/ic_vol"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="10dp"
+		            android:padding="7dp" />
+			</TableRow>
+			<TableRow
+			    android:gravity="center_horizontal">
+		        <ImageButton 
+		            android:id="@+id/menuMass"
+		            android:src="@drawable/ic_mass"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="12dp"
+		            android:padding="7dp" />
+		        <ImageButton 
+		            android:id="@+id/menuTime"
+		            android:src="@drawable/ic_time"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="12dp"
+		            android:padding="7dp" />
+	        </TableRow>
+	        <TableRow
+			    android:gravity="center_horizontal">
+		        <ImageButton 
+		            android:id="@+id/menuSpeed"
+		            android:src="@drawable/ic_speed"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="10dp"
+		            android:padding="7dp" />
+		        <ImageButton 
+		            android:id="@+id/menuColor"
+		            android:src="@drawable/ic_color"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="10dp"
+		            android:padding="7dp" />
+			</TableRow>
+        </TableLayout>
+	</ScrollView>
+</LinearLayout>
