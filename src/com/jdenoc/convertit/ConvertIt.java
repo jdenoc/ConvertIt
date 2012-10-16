@@ -3,12 +3,11 @@ package com.jdenoc.convertit;
 // GUI:	convert.xml
 //		convert_menu.xml (for menu)
 // Author: Denis O'Connor
-// Last modified: 04/8/12
+// Last modified: 07/8/12
 // Main Conversion file
 // Allows user to convert Mass, Volume, Length, Speed and Temperature
 
-import java.io.InputStream;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -28,9 +27,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+@SuppressLint("WorldReadableFiles")
 public class ConvertIt extends Activity implements OnClickListener{
 
-	private ImageButton convert;			// interactive
+	private ImageButton convert;	// interactive
 	private Spinner from, to;		// interactive
 	private TextView title;			// interactive
 	private EditText input;			// interactive
@@ -121,38 +121,15 @@ public class ConvertIt extends Activity implements OnClickListener{
 				ConversionFunctions rates = new ConversionFunctions(fromResponce, toResponce, Double.parseDouble(info));
 				if(fromResponce.equals(toResponce)){
 					finalResult = Double.parseDouble(info);
-					
-				}else if(head.equals("Length")){
-// ***** LENGTH *****
-//					Log.d(TAG, "Begin Length Conversion");		//	TESTING
-					InputStream lenStream = getResources().openRawResource(R.raw.length_rates);
-					rates.fillTable(lenStream);
-					finalResult = rates.convert(rates.rateRetrival());
-// ***** END LENGTH *****
-				}else if(head.equals("Mass")){
-// ***** MASS *****
-//					Log.d(TAG, "Begin Mass Conversion");		//	TESTING
-					InputStream massStream = getResources().openRawResource(R.raw.mass_rates);
-					rates.fillTable(massStream);
-					finalResult = rates.convert(rates.rateRetrival());
-// ***** END MASS *****
-				}else if(head.equals("Volume")){
-// ***** VOLUME *****
-//					Log.d(TAG, "Begin Volume Conversion");		//	TESTING
-					InputStream volStream = getResources().openRawResource(R.raw.vol_rates);
-					rates.fillTable(volStream);
-					finalResult = rates.convert(rates.rateRetrival());
-// ***** END VOLUME *****
 				}else if(head.equals("Temperature")){
 // ***** TEMPERATURE *****
 //					Log.d(TAG, "Begin Temperature Conversion");		//	TESTING
 					finalResult = rates.getTemperature();
 // ***** END TEMPERATURE *****
-				}else if(head.equals("Speed")){
-//					Log.d(TAG, "Begin Speed Conversion");		//	TESTING
-					InputStream speedStream = getResources().openRawResource(R.raw.speed_rates);
-					rates.fillTable(speedStream);
-					finalResult = rates.convert(rates.rateRetrival());
+				}else{
+// ***** LENGTH, MASS, VOLUME *****
+					finalResult = rates.convert(rates.getConversion(this, head));
+// ***** END LENGTH, MASS, VOLUME *****
 				}
 				
 				Bundle data = new Bundle();

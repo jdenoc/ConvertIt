@@ -1,230 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jdenoc.convertit"
-    android:versionCode="5"
+    android:versionCode="6"
     android:versionName="@string/version" >
 
-    <uses-sdk 
+    <uses-sdk
+        android:maxSdkVersion="16"
         android:minSdkVersion="8"
-        android:targetSdkVersion="10"
-        android:maxSdkVersion="16" />
-    
+        android:targetSdkVersion="10" />
+
     <!-- Permissions needed to connect to the internet -->
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
-	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
-	<!-- END Permissions -->	
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- END Permissions -->
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"  >
-<!-- Start App with Splash -->
+        android:label="@string/app_name" >
+
+        <!-- Start App with Splash -->
         <activity
-            android:label="@string/app_name"
             android:name=".Splash"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden" >
-            <intent-filter >
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!-- End App Start -->
-<!-- Main Activities -->
+        <!-- End App Start -->
+        <!-- Main Activities -->
         <activity
             android:name=".Main"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden" >
-            <intent-filter >
+            android:exported="false" >
+            <intent-filter>
                 <action android:name="com.jdenoc.convertit.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".ConvertIt"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <action android:name="com.jdenoc.convertit.CONVERT"/>
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.CONVERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".CurrencyConvertIt"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <action android:name="com.jdenoc.convertit.CURRENCY"/>
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.CURRENCY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-		
-		<activity 
+        <activity
             android:name=".TimeConvertIt"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <action android:name="com.jdenoc.convertit.TIME"/>
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.TIME" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".ColorConvertIt"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <action android:name="com.jdenoc.convertit.COLOR"/>
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.COLOR" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-<!-- END Main Activities -->
-<!-- Foreground Activities -->
-		<activity 
+        <!-- END Main Activities -->
+        <!-- Foreground Activities -->
+        <activity
             android:name=".About"
+            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
+            android:exported="false" >
+            <intent-filter>
                 <action android:name="com.jdenoc.convertit.ABOUT" />
-                <category android:name = "android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-        <activity 
+        <activity
             android:name=".Result"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Result"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <action android:name="com.jdenoc.convertit.RESULT"/>
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.RESULT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".AccessInternet"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Accessing the Internet"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <action android:name="com.jdenoc.convertit.ACCESSINTERNET"/>
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.ACCESSINTERNET" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".ChangeDecimal"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Change Decimal Place"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".ChangeCurrencyDisplay"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Change how currencies are Displayed"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-		    
-	    <activity 
+        <activity
             android:name=".ChangeTimeDisplay"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Change how Timezones are Displayed"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".NoConnection"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Connection Error"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <action android:name="com.jdenoc.convertit.NOCONNECTION"/>
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.NOCONNECTION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".SetTime"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Set Time"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
+            android:exported="false" >
+            <intent-filter>
                 <action android:name="com.jdenoc.convertit.SETTIME" />
-                <category android:name = "android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".SetZone"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Set Time Zone"
             android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
+            android:exported="false" >
+            <intent-filter>
                 <action android:name="com.jdenoc.convertit.SETZONE" />
-                <category android:name = "android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-<!-- END Foreground Activities -->
-<!-- List Activities -->
-	    <activity 
+
+        <!-- END Foreground Activities -->
+        <!-- List Activities -->
+        <activity
             android:name=".Settings"
+            android:configChanges="orientation|keyboardHidden"
             android:label="ConvertIt Settings"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
-                <action android:name="com.jdenoc.convertit.SETTINGS"/>
-                <category android:name = "android.intent.category.DEFAULT"/>
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-		<activity 
+        <activity
             android:name=".Help"
+            android:configChanges="orientation|keyboardHidden"
             android:label="Help - ConvertIt"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter >
+            android:exported="false" >
+            <intent-filter>
                 <action android:name="com.jdenoc.convertit.HELP" />
-                <category android:name = "android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-<!-- END List Activities -->
-<!-- Tabs -->
-		<activity 
-		    android:name=".TimeByLocation"
-		    android:theme="@android:style/Theme.Black.NoTitleBar" >
-		</activity>
-		
-		<activity 
-		    android:name=".TimeByZone"
-		    android:theme="@android:style/Theme.Black.NoTitleBar" >
-		</activity>
-		
-		<activity 
-		    android:name=".RGBtoHEX"
-		    android:theme="@android:style/Theme.Black.NoTitleBar" >
-		</activity>
-		
-		<activity 
-		    android:name=".HEXtoRGB"
-		    android:theme="@android:style/Theme.Black.NoTitleBar" >
-		</activity>
-<!-- END Tabs -->   
-	</application>
+        <!-- END List Activities -->
+        <!-- Tabs -->
+        <activity
+            android:name=".TimeByLocation"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".TimeByZone"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".RGBtoHEX"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".HEXtoRGB"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <!-- END Tabs -->
+    </application>
 
 </manifest>

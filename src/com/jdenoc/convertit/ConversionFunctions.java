@@ -2,23 +2,17 @@ package com.jdenoc.convertit;
 // ConversionFunctions.java
 // GUI: n/a
 // Author: Denis O'Connor
-// Last modified: 28/6/12
+// Last modified: 07/8/12
 // Contains functions to allow for conversions
 // Not for Time or Currency Conversions
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Hashtable;
-
+import android.content.Context;
 //import android.util.Log;		//	TESTING
 
 public class ConversionFunctions {
 	
 	private String convertFrom, convertTo;
 	private double value;
-	private Hashtable<String, Double> ratesTable;	// to contain the rates of conversion
 	
 //	private final String TAG = "ConversionFunctions";		//	TESTING
 	
@@ -27,14 +21,7 @@ public class ConversionFunctions {
 		convertFrom = from;
 		convertTo = to;
 		value = input;
-		ratesTable = new Hashtable<String, Double>();
 	}// END Constructor
-	
-	public double rateRetrival(){
-//		depending on the convertFrom and convertTo values, searches Hashtable for rate
-		String hashKey = convertFrom+"-"+convertTo;
-		return ratesTable.get(hashKey);
-	}// END rateRetrival()
 	
 	public double getTemperature(){
 //		Calcultes the temperature
@@ -65,24 +52,12 @@ public class ConversionFunctions {
 		return value;
 	}// END getTemperature()
 	
-	public void fillTable(InputStream inStream){
-//		Fill hashtable with values from "length_rates", "mass_rates" & "vol_rates" files in raw folder
-		BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
-		String line, hashKey;
-		double hashValue; 
-		try {
-			line = reader.readLine();
-			while (line != null) {
-//				Log.d(TAG, line);		// TESTING (slows down app when active)
-				hashKey = line.substring(0, line.indexOf(' '));
-				hashValue = Double.valueOf(line.substring(line.indexOf(' ')+1));
-				ratesTable.put(hashKey, hashValue);
-				line = reader.readLine();	// advance to the next line
-			}
-		} catch (IOException e) {
-//			Log.e(TAG, "fillTable ERROR: "+e.toString()+" - (Table not filled)");		//	TESTING
-		}
-	}// END fillTable()
+	public double getConversion(Context c, String type){
+		DbHelper db = new DbHelper(c);
+		double rate = db.getConversionRate(type, convertFrom, convertTo);
+		db.close();
+		return rate;
+	}//	END getConversion()
 	
 	public double convert(double rate){
 //		Run the final conversion
