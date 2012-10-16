@@ -85,16 +85,19 @@
     <LinearLayout 
         android:gravity="center"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_paddingTop="15dp">
 		<!-- Confirm CONVERT LINE -->
-        <ImageButton 
+
+        <ImageButton
             android:id="@+id/doConversion"
-            android:src="@drawable/convert_it"
-            android:background="@drawable/button_press"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:contentDescription="Conversion Button"/>
+            android:layout_height="fill_parent"
+            android:background="@drawable/button_press"
+            android:contentDescription="Conversion Button"
+            android:src="@drawable/convert_it" />
+
     </LinearLayout>
 
 </LinearLayout>

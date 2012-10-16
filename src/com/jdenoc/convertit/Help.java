@@ -4,7 +4,7 @@ package com.jdenoc.convertit;
 //		expanded_group_layout.xml	(for group list title)
 //		expanded_child_layout.xml	(for expanded list display)
 // Author: Denis O'Connor
-// Last Modified: 05/7/12
+// Last Modified: 04/8/12
 // Displays an expandable list that will allow the user to search through the help sections for each conversion
 
 import java.util.ArrayList;
@@ -139,58 +139,57 @@ public class Help extends ExpandableListActivity {
      	ArrayList<HashMap<String, String>> volume = new ArrayList<HashMap<String, String>>();				// list of volume help info
      	ArrayList<HashMap<String, String>> mass = new ArrayList<HashMap<String, String>>();					// list of mass help info
      	ArrayList<HashMap<String, String>> time = new ArrayList<HashMap<String, String>>();					// list of time help info
-     	ArrayList<HashMap<String, String>> speed = new ArrayList<HashMap<String, String>>();					// list of speed help info
-     	ArrayList<HashMap<String, String>> colour = new ArrayList<HashMap<String, String>>();					// list of colour help info
+     	ArrayList<HashMap<String, String>> speed = new ArrayList<HashMap<String, String>>();				// list of speed help info
+     	ArrayList<HashMap<String, String>> colour = new ArrayList<HashMap<String, String>>();				// list of colour help info
      	
-     	HelpStrings text = new HelpStrings(); 
-     	
-     	currency.add(HashMapMaker(C_KEY, text.currencyStrings(0)));
-     	currency.add(HashMapMaker(C_KEY, text.currencyStrings(1)));
-     	currency.add(HashMapMaker(C_KEY, text.currencyStrings(2)));	// interactive (group 0, position 2) 
-     	currency.add(HashMapMaker(C_KEY, text.currencyStrings(3)));
-     	currency.add(HashMapMaker(C_KEY, text.currencyStrings(2)));	// interactive (group 0, position 4)
-     	currency.add(HashMapMaker(C_KEY, text.currencyStrings(4)));
+     	currency.add(HashMapMaker(C_KEY, getResources().getString(R.string.currencyHelp0)));
+     	currency.add(HashMapMaker(C_KEY, getResources().getString(R.string.currencyHelp1)));
+     	currency.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));	// interactive (group 0, position 2)
+     	currency.add(HashMapMaker(C_KEY, getResources().getString(R.string.currencyHelp2)));
+     	currency.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));	// interactive (group 0, position 4)
+     	currency.add(HashMapMaker(C_KEY, getResources().getString(R.string.currencyHelp3)));
      	result.add(currency);	// add currency help to overall list
      	
-     	temp.add(HashMapMaker(C_KEY, text.tempStrings(0)));
-     	temp.add(HashMapMaker(C_KEY, text.tempStrings(1)));
-     	temp.add(HashMapMaker(C_KEY, text.tempStrings(2)));			// interactive (group 1, position 2)
-     	temp.add(HashMapMaker(C_KEY, text.tempStrings(3)));
+     	temp.add(HashMapMaker(C_KEY, getResources().getString(R.string.tempHelp0)));
+     	temp.add(HashMapMaker(C_KEY, getResources().getString(R.string.tempHelp1)));
+     	temp.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));		// interactive (group 1, position 2)
+     	temp.add(HashMapMaker(C_KEY, getResources().getString(R.string.decDefault)));
      	result.add(temp);	// add temperature help to overall list 
      	
-     	length.add(HashMapMaker(C_KEY, text.lenStrings(0)));
-        length.add(HashMapMaker(C_KEY, text.lenStrings(1)));
-        length.add(HashMapMaker(C_KEY, text.lenStrings(2)));		// interactive (group 2, position 2)
-        length.add(HashMapMaker(C_KEY, text.lenStrings(3)));
-        length.add(HashMapMaker(C_KEY, text.lenStrings(4)));
+     	length.add(HashMapMaker(C_KEY, getResources().getString(R.string.lenHelp0)));
+     	length.add(HashMapMaker(C_KEY, getResources().getString(R.string.lenHelp1)));
+        length.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));	// interactive (group 2, position 2)
+        length.add(HashMapMaker(C_KEY, getResources().getString(R.string.decDefault)));
+        length.add(HashMapMaker(C_KEY, getResources().getString(R.string.lenHelp2)));
         result.add(length);		// add length help to overall list
         
-        volume.add(HashMapMaker(C_KEY, text.volStrings(1)));
-        volume.add(HashMapMaker(C_KEY, text.volStrings(2)));		// interactive (group 3, position 2)
-        volume.add(HashMapMaker(C_KEY, text.volStrings(3)));
-        volume.add(HashMapMaker(C_KEY, text.volStrings(4)));
+        volume.add(HashMapMaker(C_KEY, getResources().getString(R.string.volHelp0)));
+        volume.add(HashMapMaker(C_KEY, getResources().getString(R.string.volHelp1)));
+        volume.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));	// interactive (group 3, position 2)
+        volume.add(HashMapMaker(C_KEY, getResources().getString(R.string.decDefault)));
+        volume.add(HashMapMaker(C_KEY, getResources().getString(R.string.volHelp2)));
         result.add(volume);	// add volume help to overall list
         
-        mass.add(HashMapMaker(C_KEY, text.massStrings(0)));
-        mass.add(HashMapMaker(C_KEY, text.massStrings(1)));
-        mass.add(HashMapMaker(C_KEY, text.massStrings(2)));			// interactive (group 4, position 2)
-        mass.add(HashMapMaker(C_KEY, text.massStrings(3)));
+        mass.add(HashMapMaker(C_KEY, getResources().getString(R.string.massHelp0)));
+        mass.add(HashMapMaker(C_KEY, getResources().getString(R.string.massHelp1)));
+        mass.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));		// interactive (group 4, position 2)
+        mass.add(HashMapMaker(C_KEY, getResources().getString(R.string.decDefault)));
         result.add(mass);	// add mass help to overall list
         
-        time.add(HashMapMaker(C_KEY, text.timeStrings(0)));
-        time.add(HashMapMaker(C_KEY, text.timeStrings(1)));
-        time.add(HashMapMaker(C_KEY, text.timeStrings(2)));			// interactive (group 5, position 2) 
+        time.add(HashMapMaker(C_KEY, getResources().getString(R.string.timeHelp0)));
+        time.add(HashMapMaker(C_KEY, getResources().getString(R.string.timeHelp1)));
+        time.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));		// interactive (group 5, position 2) 
         result.add(time);	// add time help to overall list
         
-        speed.add(HashMapMaker(C_KEY, text.speedStrings(0)));
-        speed.add(HashMapMaker(C_KEY, text.speedStrings(1)));
-        speed.add(HashMapMaker(C_KEY, text.speedStrings(2)));		// interactive (group 6, position 2)
-        speed.add(HashMapMaker(C_KEY, text.speedStrings(3)));
-        speed.add(HashMapMaker(C_KEY, text.speedStrings(4)));
+        speed.add(HashMapMaker(C_KEY, getResources().getString(R.string.speedHelp0)));
+        speed.add(HashMapMaker(C_KEY, getResources().getString(R.string.speedHelp1)));
+        speed.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));		// interactive (group 6, position 2)
+        speed.add(HashMapMaker(C_KEY, getResources().getString(R.string.decDefault)));
+        speed.add(HashMapMaker(C_KEY, getResources().getString(R.string.speedHelp2)));
         result.add(speed);	// add speed help to overall list
         
-        colour.add(HashMapMaker(C_KEY, text.colourStrings(0)));
-        colour.add(HashMapMaker(C_KEY, text.colourStrings(1)));
+        colour.add(HashMapMaker(C_KEY, getResources().getString(R.string.colorHelp0)));
+        colour.add(HashMapMaker(C_KEY, getResources().getString(R.string.colorHelp1)));
         result.add(colour);	// add colour help to overall list
         
         return result;

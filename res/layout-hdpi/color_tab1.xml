@@ -98,7 +98,7 @@
     	android:id="@+id/colorCanvas"
 		android:layout_width="fill_parent"
         android:layout_height="200dp"
-        android:layout_margin="15dp"
+        android:layout_margin="20dp"
         android:background="#FFFFFF"
         android:gravity="bottom" >
 
@@ -118,14 +118,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:paddingTop="15dp"
         android:gravity="center" >
-
         <!-- Confirm CONVERT LINE -->
         <ImageButton
             android:id="@+id/doConversion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            
             android:background="@drawable/button_press"
             android:src="@drawable/convert_it" 
             android:contentDescription="Conversion Button"/>

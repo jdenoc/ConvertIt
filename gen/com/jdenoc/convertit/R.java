@@ -154,14 +154,55 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f080001;
+        /**  HELP Strings (Colour) 
+         */
+        public static final int colorHelp0=0x7f080015;
+        public static final int colorHelp1=0x7f080016;
         public static final int con1=0x7f080002;
         public static final int con2=0x7f080003;
+        /**  HELP Strings (Currency) 
+         */
+        public static final int currencyHelp0=0x7f08000c;
+        public static final int currencyHelp1=0x7f08000d;
+        public static final int currencyHelp2=0x7f08000e;
+        public static final int currencyHelp3=0x7f08000f;
         public static final int currencySite=0x7f080007;
+        public static final int decDefault=0x7f08000b;
         public static final int featureNA=0x7f080008;
+        /**  HELP Strings (Length) 
+         */
+        public static final int lenHelp0=0x7f080012;
+        public static final int lenHelp1=0x7f080013;
+        public static final int lenHelp2=0x7f080014;
+        /**  HELP Strings (Mass) 
+         */
+        public static final int massHelp0=0x7f08001a;
+        public static final int massHelp1=0x7f08001b;
         public static final int newSetting=0x7f080009;
+        /**  HELP Strings (Speed) 
+         */
+        public static final int speedHelp0=0x7f08001e;
+        public static final int speedHelp1=0x7f08001f;
+        public static final int speedHelp2=0x7f080020;
         public static final int tCity=0x7f080005;
         public static final int tRegion=0x7f080004;
         public static final int tZone=0x7f080006;
+        /**  HELP Strings (General) 
+         */
+        public static final int tap=0x7f08000a;
+        /**  HELP Strings (Temperature) 
+         */
+        public static final int tempHelp0=0x7f080010;
+        public static final int tempHelp1=0x7f080011;
+        /**  HELP Strings (Time) 
+         */
+        public static final int timeHelp0=0x7f08001c;
+        public static final int timeHelp1=0x7f08001d;
         public static final int version=0x7f080000;
+        /**  HELP Strings (Volume) 
+         */
+        public static final int volHelp0=0x7f080017;
+        public static final int volHelp1=0x7f080018;
+        public static final int volHelp2=0x7f080019;
     }
 }
