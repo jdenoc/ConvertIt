@@ -3,7 +3,7 @@ package com.jdenoc.convertit;
 // GUI:	convert.xml
 //		convert_menu.xml (for menu)
 // Author: Denis O'Connor
-// Last modified: 05/7/12
+// Last modified: 04/8/12
 // Main Conversion file
 // Allows user to convert Mass, Volume, Length, Speed and Temperature
 
@@ -65,7 +65,7 @@ public class ConvertIt extends Activity implements OnClickListener{
 		title.setText(head);		// Sets the Convert title to information received from previous activity
 		
 //		Spinner selectors
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, spinnerArray, android.R.layout.simple_spinner_item);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, spinnerArray, R.layout.simple_item_text);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	    to.setAdapter(adapter);
 		from.setAdapter(adapter);

@@ -14,11 +14,13 @@
         />
     
     <EditText 
+        android:inputType="number"
         android:layout_marginTop="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/decimalEdit"
-        android:numeric="integer"/>
+        android:textColor="@color/textColor"
+        android:maxLength="1"/>
     
     <TextView 
         android:layout_width="fill_parent"

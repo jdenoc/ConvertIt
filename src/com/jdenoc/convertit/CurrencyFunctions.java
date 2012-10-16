@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // Currency.java
 // GUI: n/a
 // Author: Denis O'Connor
-// Last modified: 02/8/12
+// Last modified: 04/8/12
 // Contains functions for Currency conversions
 
 import java.io.StringReader;
@@ -25,12 +25,13 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import android.app.Activity;
-import android.util.Log;		//	TESTING
+//import android.util.Log;		//	TESTING
+import android.widget.Toast;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
-import android.widget.Toast;
+import android.os.AsyncTask;
 
 public class CurrencyFunctions extends Activity{
 
@@ -39,12 +40,11 @@ public class CurrencyFunctions extends Activity{
 	private String convertFrom, convertTo;
 	private double value;
 	private boolean fullCurrency;
-	private final String TAG = "CurrencyModule";		//	TESTING
+//	private final String TAG = "CurrencyModule";		//	TESTING
 	
 	public CurrencyFunctions(){
 //		Constructor - DOES NOTHING
 	}// END Constructor
-	
 	
 	public CurrencyFunctions(boolean format){
 //		Constructor
@@ -74,7 +74,15 @@ public class CurrencyFunctions extends Activity{
 			serverURL += convertFrom+"/rss.xml";
 		}
 		
-		String xml = xmlHTTPconnect(serverURL);
+		AsyncTask<String, Void, String> connection = new xmlHTTPconnect().execute(serverURL);
+		String xml;
+		try {
+			xml = connection.get();
+		} catch (Exception e) {
+//			Log.e(TAG, "XML retrieval Error: "+e.getMessage());
+			xml = null;
+		}
+		
 		if(xml == null){
 //			if there is a connection failure
 			return false;
@@ -103,7 +111,15 @@ public class CurrencyFunctions extends Activity{
 		final String INFO = "description";	// for the full name of the currency
 		Hashtable<String, ArrayList<String>> arrays = new Hashtable<String, ArrayList<String>>();	// Hashtable to return
 		
-		String xml = xmlHTTPconnect("http://themoneyconverter.com/rss-feed/USD/rss.xml");
+		AsyncTask<String, Void, String> connection = new xmlHTTPconnect().execute("http://themoneyconverter.com/rss-feed/USD/rss.xml");
+		String xml;
+		try {
+			xml = connection.get();
+		} catch (Exception e) {
+//			Log.e(TAG, "XML retrieval Error: "+e.getMessage());
+			xml = null;
+		}
+		
 		if(xml == null){//	if there is a connection failure
 			return null;
 		}
@@ -125,7 +141,7 @@ public class CurrencyFunctions extends Activity{
 			if(fullCurrency){
 				money = cleanInput(getValue(e, INFO)); 	// Obtain the full currency name
 				keyStore.put(money, getValue(e, NAME));
-//				Log.d(TAG, "into keyStore:"+getValue(e, NAME)+,"+money);	// slows app down when active
+//				Log.d(TAG, "into keyStore:"+getValue(e, NAME)+" money");	// slows app down when active
 			}else{
 				money = cleanInput(getValue(e, NAME));	// Obtain the 3 letter currency name
 			}
@@ -185,24 +201,7 @@ public class CurrencyFunctions extends Activity{
 		}
 	}// END cleanInput()
 	
-	public String xmlHTTPconnect(String url){
-//		Connect to the internet, retrieve an XML rss feed
-//		Log.d(TAG, "Should get something like this: http://themoneyconverter.com/rss-feed/USD/rss.xml");	//TESTING
-//		Log.d(TAG, "Actually got: "+url);				// TESTING
-		String xml = null;
-		try{
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpGet httppost = new HttpGet(url);
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			xml = EntityUtils.toString(entity);
-//			Log.d(TAG, "Site Accessed");		//	TESTING
-		}catch(Exception e){
-//			Log.e(TAG, "Error in http connection: "+e.toString());		//	TESTING
-		}
-		return xml;
-	}// END xmlHTTPconnect()
-			
+				
 	public Document getDomElements(String xml){
 //		Convert XML to searchable format
 		Document doc = null;
@@ -274,10 +273,10 @@ public class CurrencyFunctions extends Activity{
 	    NetworkInfo mMobile = connManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 	    
 		if(wifiManager.isWifiEnabled()){
-			Log.d(TAG, "Wi-Fi enabled");		//	TESTING
+//			Log.d(TAG, "Wi-Fi enabled");		//	TESTING
 			//if wi-fi connected
 			if (mWifi.isConnected()) {
-				Log.d(TAG, "Wi-Fi connected");		//	TESTING
+//				Log.d(TAG, "Wi-Fi connected");		//	TESTING
 				if(!fromSettings){
 					return returns[2];		// Runs CurrencyConvertIt.java
 				}else{
@@ -312,4 +311,28 @@ public class CurrencyFunctions extends Activity{
 	    	return returns[0];		// Runs AccessInternet.java
 	    }
 	}// END checkInternetConnectivity()
+
+	private class xmlHTTPconnect extends AsyncTask<String, Void, String>{
+//		Connect to the internet, retrieve an XML rss feed
+		
+		@Override
+		protected String doInBackground(String... params) {
+//	    	Runs processes in background
+			String xml = null;
+			try{
+				HttpClient httpclient = new DefaultHttpClient();
+				HttpGet httppost = new HttpGet(params[0]);
+				HttpResponse response = httpclient.execute(httppost);
+				HttpEntity entity = response.getEntity();
+				xml = EntityUtils.toString(entity);
+//				Log.d(TAG, "Site Accessed");		//	TESTING
+			}catch(Exception e){
+//				Log.e(TAG, "Error in http connection: "+e.toString());		//	TESTING
+			}
+			return xml;
+	    }// END doInBackground()
+
+	}// END xmlHTTPconnect()
+
+
 }

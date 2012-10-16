@@ -7,7 +7,6 @@
     android:background="@color/secondBG">
  
     <TextView android:id="@+id/grp_child"
-        android:text="BOOBS"
         android:textColor="@color/textColor"
         android:focusable="false"
         android:textStyle="normal"

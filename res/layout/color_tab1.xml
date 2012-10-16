@@ -52,9 +52,12 @@
 			        />
 		        <EditText
 		            android:id="@+id/colorR"
-		            android:numeric="integer"
+		            android:inputType="number"
 		            android:layout_width="50dp"
 		            android:layout_height="wrap_content"
+		            android:textColor="@color/textColor"
+		            android:maxLength="3"
+		            android:imeOptions="actionNext"
 		            />
 	        </TableRow>
 	        <TableRow >
@@ -70,9 +73,12 @@
 			        />
 		        <EditText
 		            android:id="@+id/colorG"
-		            android:numeric="integer"
+		            android:inputType="number"
 		            android:layout_width="50dp"
 		            android:layout_height="wrap_content"
+		            android:textColor="@color/textColor"
+		            android:maxLength="3"
+		            android:imeOptions="actionNext"
 		            />
 	        </TableRow>
 	        <TableRow >
@@ -88,9 +94,12 @@
 			        />
 		        <EditText
 		            android:id="@+id/colorB"
-		            android:numeric="integer"
+		            android:inputType="number"
 		            android:layout_width="50dp"
 		            android:layout_height="wrap_content"
+		            android:textColor="@color/textColor"
+		            android:maxLength="3"
+		            android:imeOptions="actionDone"
 		            />
 	        </TableRow>
 	    </TableLayout>
@@ -127,7 +136,7 @@
             android:background="@drawable/button_press"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:contentDescription="Conversion Button"/>
     </LinearLayout>
 
 </LinearLayout>

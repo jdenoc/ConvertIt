@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // TimeByLocation.java
 // GUI: time_tab.xml
 // Author: Denis O'Connor
-// Last Modified: 05/7/12
+// Last Modified: 04/8/12
 // First tab used in Time Conversion
 // Allows user to Convert Time based on location
 
@@ -69,7 +69,7 @@ public class TimeByLocation extends Activity implements OnClickListener{
 		locations = t.getLocations(new Hashtable<String, ArrayList<String>>()); 
 		
 		String[] keys =  locations.keySet().toArray(new String[locations.keySet().toArray().length]);
-		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  keys);
+		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, R.layout.simple_item_text,  keys);
 		adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		region.setAdapter(adapter1);
 		region.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -145,7 +145,7 @@ public class TimeByLocation extends Activity implements OnClickListener{
 	}// END onActivityResult()
 	
 	public void changeCityList(String[] values){
-		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values);
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.simple_item_text, values);
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		city.setAdapter(adapter2);
 		city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

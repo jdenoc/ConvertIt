@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // SetZone.java
 // GUI: set_zone.xml
 // Author: Denis O'Connor
-// Last Modified: 27/6/12
+// Last Modified: 04/8/12
 // Allows the user to set a different time zone that the one they are currently in
 
 import java.util.Arrays;
@@ -41,7 +41,7 @@ public class SetZone extends Activity implements OnClickListener{
 		final Hashtable<String, String> table = t.getTimezones();
 		String[] keys = table.keySet().toArray(new String[table.keySet().toArray().length]);
 		Arrays.sort(keys);	// Sorts the keys array in Alphabetical order
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, keys);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_item_text, keys);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		zone.setAdapter(adapter);
 		

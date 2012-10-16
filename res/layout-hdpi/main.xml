@@ -31,8 +31,8 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="10dp"
-		            android:padding="7dp" 
-		            android:contentDescription="Icon to access Currency Conversions" />
+		            android:padding="60dp"
+		            android:contentDescription="Icon for Currency Conversion Access" />
 			    <ImageButton
 		            android:id="@+id/menuTemp"
 		            android:src="@drawable/ic_temp"
@@ -41,8 +41,8 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="10dp"
-		            android:padding="7dp"
-		            android:contentDescription="Icon to access Temperature Conversions" />
+		            android:padding="60dp"
+		            android:contentDescription="Icon for Temperature Conversion Access" />
 		    </TableRow>
 		    <TableRow
 				android:gravity="center_horizontal">
@@ -54,8 +54,8 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="12dp"
-		            android:padding="7dp"
-		            android:contentDescription="Icon to access Length Conversions" />
+		            android:padding="60dp"
+		            android:contentDescription="Icon for Length Conversion Access" />
 				<ImageButton
 		            android:id="@+id/menuVol"
 		            android:src="@drawable/ic_vol"
@@ -64,8 +64,8 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="10dp"
-		            android:padding="7dp"
-		            android:contentDescription="Icon to access Volume Conversions" />
+		            android:padding="60dp"
+		            android:contentDescription="Icon for Volume Conversion Access" />
 			</TableRow>
 			<TableRow
 			    android:gravity="center_horizontal">
@@ -77,8 +77,8 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="12dp"
-		            android:padding="7dp"
-		            android:contentDescription="Icon to access Mass (Weigth) Conversions" />
+		            android:padding="60dp"
+		            android:contentDescription="Icon for Mass (Weight) Conversion Access" />
 		        <ImageButton 
 		            android:id="@+id/menuTime"
 		            android:src="@drawable/ic_time"
@@ -87,8 +87,8 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="12dp"
-		            android:padding="7dp"
-		            android:contentDescription="Icon to access Time (Zone) Conversions" />
+		            android:padding="60dp"
+		            android:contentDescription="Icon for Time (From zone to zone) Conversion Access" />
 	        </TableRow>
 	        <TableRow
 			    android:gravity="center_horizontal">
@@ -100,8 +100,8 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="10dp"
-		            android:padding="7dp"
-		            android:contentDescription="Icon to access Speed Conversions" />
+		            android:padding="60dp"
+		            android:contentDescription="Icon for Speed Conversion Access" />
 		        <ImageButton 
 		            android:id="@+id/menuColor"
 		            android:src="@drawable/ic_color"
@@ -110,8 +110,8 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="10dp"
-		            android:padding="7dp"
-		            android:contentDescription="Icon to access Colour (Hex to RGB and vice versa) Conversions" />
+		            android:padding="60dp"
+		            android:contentDescription="Icon for Colour (Hex to RGB and vice-versa) Conversion Access" />
 			</TableRow>
         </TableLayout>
 	</ScrollView>

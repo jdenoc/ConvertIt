@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="HardcodedText">
+        <ignore path="res\layout-hdpi\color_tab1.xml" />
+        <ignore path="res\layout-hdpi\color_tab2.xml" />
+        <ignore path="res\layout-hdpi\convert.xml" />
+        <ignore path="res\layout-hdpi\main.xml" />
+        <ignore path="res\layout-hdpi\time_tab.xml" />
+        <ignore path="res\layout\change_decimal.xml" />
+        <ignore path="res\layout\color_tab1.xml" />
+        <ignore path="res\layout\color_tab2.xml" />
+        <ignore path="res\layout\convert.xml" />
+        <ignore path="res\layout\currency.xml" />
+        <ignore path="res\layout\expand_child_layout.xml" />
+        <ignore path="res\layout\expand_group_layout.xml" />
+        <ignore path="res\layout\help.xml" />
+        <ignore path="res\layout\main.xml" />
+        <ignore path="res\layout\output.xml" />
+        <ignore path="res\layout\set_time.xml" />
+        <ignore path="res\layout\set_zone.xml" />
+        <ignore path="res\layout\settings_change.xml" />
+        <ignore path="res\layout\time_tab.xml" />
+    </issue>
+</lint>

@@ -95,7 +95,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="10dp" >
         <!-- Spinner LINE 1 -->
-        <TableRow >
+        <TableRow android:gravity="center">
             <TextView
                 android:id="@+id/timeLable1"
 	            android:layout_width="wrap_content"
@@ -112,7 +112,7 @@
 	            />
 		</TableRow>
 		<!-- Spinner LINE 2 -->
-        <TableRow >
+        <TableRow android:gravity="center">
             <TextView 
 	            android:id="@+id/timeLable2"
 	            android:layout_width="wrap_content"
@@ -143,7 +143,7 @@
             android:background="@drawable/button_press"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:contentDescription="Conversion Button"/>
     </LinearLayout>
     <!-- END convert -->
     

@@ -8,7 +8,6 @@
  
  	<TextView 
  	    android:id="@+id/group_name"
-		android:text="BOOBS"
 		android:textSize="20dp"
         android:textStyle="bold"
 		android:textColor="@color/textColor"

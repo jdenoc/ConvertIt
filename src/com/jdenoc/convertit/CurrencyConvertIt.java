@@ -3,7 +3,7 @@ package com.jdenoc.convertit;
 // GUI:	currency.xml
 //		convert_menu.xml (for menu)
 // Author: Denis O'Connor
-// Last modified: 05/7/12
+// Last modified: 04/8/12
 // Allows the user to convert between two currencies
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-//import android.util.Log;		//	TESTING
+import android.util.Log;		//	TESTING
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,14 +38,14 @@ public class CurrencyConvertIt extends Activity implements OnClickListener{
 	private String fromResponce, toResponce;			// contains the value associated with the spinners
 	private Hashtable<String, String> currencyNameTable;
 	private Hashtable<String, ArrayList<String>> spinners;
-//	private final String TAG = "ConvertIt:Currency";	// TESTING 
+	private final String TAG = "ConvertIt:Currency";	// TESTING 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);		// removes title bar
 		setContentView(R.layout.currency);
-//		Log.d(TAG, "Currency started");		// TESTING
+		Log.d(TAG, "Currency started");		// TESTING
 		
 		// Setup interactive XML references
 		input = (EditText) findViewById(R.id.convertInput);
@@ -67,7 +67,7 @@ public class CurrencyConvertIt extends Activity implements OnClickListener{
 		}else{
 //			Spinner selectors
 			String[] regionSpinner = spinners.keySet().toArray(new String[spinners.keySet().toArray().length]);
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, regionSpinner);
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_item_text, regionSpinner);
 			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //			
 			regionFrom.setAdapter(adapter);
@@ -203,22 +203,22 @@ public class CurrencyConvertIt extends Activity implements OnClickListener{
 //END Menu Button setup
 	
 	public boolean setup(){
-//		Log.d(TAG, "Initialising setup...");		//	TESTING
+		Log.d(TAG, "Initialising setup...");		//	TESTING
 		CurrencyFunctions types = new CurrencyFunctions(settings.getBoolean("currency", false));
 		spinners = types.getCurrencyArray();		// Either "title" for short or "description" for long
 		if(spinners == null ){
-//			Log.d(TAG, "Connection Error ;_;");		//	TESTING
+			Log.d(TAG, "Connection Error ;_;");		//	TESTING
 			return false;
 		}else{
 			currencyNameTable = types.getStoredKeys();
-//			Log.d(TAG, "Good to go ^_^");		//	TESTING
+			Log.d(TAG, "Good to go ^_^");		//	TESTING
 			return true;
 		}
 	}//	END setup()
 	
 //	Extra Spinner functions for updating
 	public void changeFrom(String[] fromValues){
-		ArrayAdapter<String> adapterFrom = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, fromValues);
+		ArrayAdapter<String> adapterFrom = new ArrayAdapter<String>(this, R.layout.simple_item_text, fromValues);
 		adapterFrom.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		from.setAdapter(adapterFrom);
 		from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -232,7 +232,7 @@ public class CurrencyConvertIt extends Activity implements OnClickListener{
 	}//	END changeFrom()
 	
 	public void changeTo(String[] toValues){
-		ArrayAdapter<String> adapterTo = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, toValues);
+		ArrayAdapter<String> adapterTo = new ArrayAdapter<String>(this, R.layout.simple_item_text, toValues);
 		adapterTo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		to.setAdapter(adapterTo);
 		to.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

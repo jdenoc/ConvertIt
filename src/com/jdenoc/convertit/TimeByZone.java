@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // TimeByZone.java
 // GUI: time_tab.xml
 // Author: Denis O'Connor
-// Last Modified: 05/7/12
+// Last Modified: 04/8/12
 // Second tab for time zone conversion
 // Allows user to convert time zone by time zone selection
 
@@ -67,7 +67,7 @@ public class TimeByZone extends Activity implements OnClickListener{
 		final Hashtable<String, String> table = t.getTimezones();
 		String[] keys = table.keySet().toArray(new String[table.keySet().toArray().length]);
 		Arrays.sort(keys);	// Sorts the keys array in Alphabetical order
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, keys);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_item_text, keys);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		zone.setAdapter(adapter);
 		
