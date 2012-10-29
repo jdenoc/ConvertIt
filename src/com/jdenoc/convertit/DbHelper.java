@@ -2,30 +2,33 @@ package com.jdenoc.convertit;
 // DbHelper.java
 // GUI: N/A
 // Author: Denis O'Connor
-// Last Modified: 07/8/12
+// Last Modified: 28-OCT-2012
 // SRC:	http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
-// SQLite Database for Length, Mass, Speed & Volume Conversions
+// SQLite Database for Length, Mass, Speed, Volume, Time and Area Conversions
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-//import android.util.Log;		// TESTING ONLY
+import android.util.Log;		// TESTING ONLY
 
 	
 public class DbHelper extends SQLiteOpenHelper{
 
 	public static final String KEY_NAME = "name";
-	public static final String[] KEY_SPEED = {"'m/s'", "'k/m'", "'mph'", "'Knots'", "'ft/s'", "'Mach'"};
+	public static final String[] KEY_SPEED = {"'m_s'", "'kph'", "'mph'", "'Knots'", "'ft_s'", "'Mach'"};
 	public static final String[] KEY_LEN = {"'Inch'", "'Foot'", "'Yard'", "'Mile'", "'MM'", "'CM'", "'M'", "'KM'" , "'NauticalMile'"};
 	public static final String[] KEY_VOL = {"'Fl.Oz(US)'", "'Fl.Oz(UK)'", "'Pint(US)'", "'Pint(UK)'", "'Quart(US)'", "'Quart(UK)'", "'Gallon(US)'", "'Gallon(UK)'", "'Millilitre'", "'Litre'"};
 	public static final String[] KEY_MASS = {"'Milligram'", "'Gram'", "'Kilogram'", "'Pound'", "'Ounce'", "'Ton(US)'", "'Ton(UK)'", "'MetricTon'"};
-		
+	// TODO - Get values for time and area conversions
+	public static final String[] KEY_TIME = {"'Milligram'", "'Gram'", "'Kilogram'", "'Pound'", "'Ounce'", "'Ton(US)'", "'Ton(UK)'", "'MetricTon'"};
+	public static final String[] KEY_AREA = {"'Milligram'", "'Gram'", "'Kilogram'", "'Pound'", "'Ounce'", "'Ton(US)'", "'Ton(UK)'", "'MetricTon'"};
+	
 	private static final String DB_NAME = "Conversion Values";
-	private static final String[] TABLE_NAME = {"Speed", "Length", "Volume", "Mass"};
+	private static final String[] TABLE_NAME = {"Speed", "Length", "Volume", "Mass", "Time", "Area"};
 	private static final int DB_VER = 1;
 	
-//	private static final String TAG = "SQLite";
+	private static final String TAG = "SQLite";
 	
 	public DbHelper(Context context) {
 		super(context, DB_NAME, null, DB_VER);
@@ -35,21 +38,42 @@ public class DbHelper extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 //		Used when creating database
-				
-		// Create Speed Table
-//		Log.d(TAG, "Creating Speed Table");
-		db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME[0]+" ("+ 	//	Speed
-			KEY_NAME+" TEXT NOT NULL, "+
-			KEY_SPEED[0]+" REAL NOT NULL, "+	//	m/s
-			KEY_SPEED[1]+" REAL NOT NULL, "+	//	km/h
-			KEY_SPEED[2]+" REAL NOT NULL, "+	//	mph
-			KEY_SPEED[3]+" REAL NOT NULL, "+	//	Knots
-			KEY_SPEED[4]+" REAL NOT NULL, "+	//	ft/s
-			KEY_SPEED[5]+" REAL NOT NULL);"		//	Mach
-		);
+		for(int i=0; i < TABLE_NAME.length; i++){
+			Log.d(TAG, "Creating "+TABLE_NAME[i]+" Table");		// TESTING
+			Object[] keys = {};
+			switch(i){
+			case 0:	// Speed
+				keys = KEY_SPEED;
+				break;
+			case 1:	// Length
+				keys = KEY_LEN;
+				break;
+			case 2:	// Volume
+				keys = KEY_VOL;
+				break;
+			case 3:	// Mass
+				keys = KEY_MASS;
+				break;
+			case 4:	// Time	TODO - Get values for time conversions
+				keys = KEY_TIME;
+				break;
+			case 5:	// Area	TODO - Get values for area conversions
+				keys = KEY_AREA;
+				break;
+			}
+			
+			String createTable = "CREATE TABLE IF NOT EXISTS "+TABLE_NAME[i]+" ("+KEY_NAME+" TEXT NOT NULL";
+			for(int j=0; j<keys.length; j++){
+				createTable += ", "+(String) keys[j]+" REAL NOT NULL";
+			}
+			createTable += ");";
+						
+			Log.d(TAG, createTable);	// TESTING
+			db.execSQL(createTable);	// Create Tables
+		}
 		
 		// Populate Speed Table
-//		Log.d(TAG, "Populating Speed Table");
+		Log.d(TAG, "Populating Speed Table");		// TODO - Seems to be causing a problem somewhere  
 		db.execSQL("INSERT INTO "+TABLE_NAME[0]+" ("+
 			KEY_NAME+", "+KEY_SPEED[0]+", "+KEY_SPEED[1]+", "+KEY_SPEED[2]+", "+KEY_SPEED[3]+", "+KEY_SPEED[4]+", "+KEY_SPEED[5]+") VALUES " +
 			"("+KEY_SPEED[0]+", 1, 3.6, 2.236926, 1.943844, 3.280840, 1224.7752)," +
@@ -60,23 +84,8 @@ public class DbHelper extends SQLiteOpenHelper{
 			"("+KEY_SPEED[5]+", 1224.7752, 1224.7752, 761.1797, 1224.7752, 1116.192, 1);"	
 		);
 		
-		// Create Length Table
-//		Log.d(TAG, "Creating Length Table");
-		db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME[1]+" ("+ 	//	Length
-			KEY_NAME+" TEXT NOT NULL, "+
-			KEY_LEN[0]+" REAL NOT NULL, "+	//	Inch
-			KEY_LEN[1]+" REAL NOT NULL, "+	//	Foot
-			KEY_LEN[2]+" REAL NOT NULL, "+	//	Yard
-			KEY_LEN[3]+" REAL NOT NULL, "+	//	Mile
-			KEY_LEN[4]+" REAL NOT NULL, "+	//	MM
-			KEY_LEN[5]+" REAL NOT NULL, "+	//	CM
-			KEY_LEN[6]+" REAL NOT NULL, "+	//	M
-			KEY_LEN[7]+" REAL NOT NULL, "+	//	KM
-			KEY_LEN[8]+" REAL NOT NULL);"	//	NauticalMile
-		);
-			
 		// Populate Length Table
-//		Log.d(TAG, "Populating Length Table");
+		Log.d(TAG, "Populating Length Table");
 		db.execSQL("INSERT INTO "+TABLE_NAME[1]+" ("+
 			KEY_NAME+", "+KEY_LEN[0]+", "+KEY_LEN[1]+", "+KEY_LEN[2]+", "+KEY_LEN[3]+", "+KEY_LEN[4]+", "+KEY_LEN[5]+", "+KEY_LEN[6]+", "+KEY_LEN[7]+", "+KEY_LEN[8]+") VALUES " +
 			"("+KEY_LEN[0]+", 1, 0.0833333333, 0.0277777778, 0.0000157828283, 25.4, 2.54, 0.0254, 0.0000254, 0.0000137149028)," +
@@ -89,25 +98,9 @@ public class DbHelper extends SQLiteOpenHelper{
 			"("+KEY_LEN[7]+", 39370.0787, 3280.8399, 1093.6133, 0.621371192, 1000000, 100000, 1000, 1, 0.539956803),"+
 			"("+KEY_LEN[8]+", 72913.3858, 6076.11549, 2025.37183, 1.15077945, 1852000, 185200, 1852, 1.85200, 1);"
 		);
-		
-		// Create Volume Table
-//		Log.d(TAG, "Creating Volume Table");
-		db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME[2]+" ("+ 	//	Volume
-			KEY_NAME+" TEXT NOT NULL, "+
-			KEY_VOL[0]+" REAL NOT NULL, "+	//	Fl.Oz(US)
-			KEY_VOL[1]+" REAL NOT NULL, "+	//	Fl.Oz(UK)
-			KEY_VOL[2]+" REAL NOT NULL, "+	//	Pint(US)
-			KEY_VOL[3]+" REAL NOT NULL, "+	//	Pint(UK)
-			KEY_VOL[4]+" REAL NOT NULL, "+	//	Quart(US)
-			KEY_VOL[5]+" REAL NOT NULL, "+	//	Quart(UK)
-			KEY_VOL[6]+" REAL NOT NULL, "+	//	Gallon(US)
-			KEY_VOL[7]+" REAL NOT NULL, "+	//	Gallon(UK)
-			KEY_VOL[8]+" REAL NOT NULL, "+	//	Millilitre
-			KEY_VOL[9]+" REAL NOT NULL);"	//	Litre
-		);
 
 		// Populate Volume Table
-//		Log.d(TAG, "Populating Volume Table");
+		Log.d(TAG, "Populating Volume Table");
 		db.execSQL("INSERT INTO "+TABLE_NAME[2]+" ("+
 			KEY_NAME+", "+KEY_VOL[0]+", "+KEY_VOL[1]+", "+KEY_VOL[2]+", "+KEY_VOL[3]+", "+KEY_VOL[4]+", "+KEY_VOL[5]+", "+KEY_VOL[6]+", "+KEY_VOL[7]+", "+KEY_VOL[8]+", "+KEY_VOL[9]+") VALUES " +
 			"("+KEY_VOL[0]+", 1, 1.04084273, 0.0625, 0.05204214, 0.03125, 0.02602134, 0.0078125, 0.00650527, 29.57352956, 0.02957353)," +
@@ -122,22 +115,8 @@ public class DbHelper extends SQLiteOpenHelper{
 			"("+KEY_VOL[9]+", 33.8140227, 35.19507973, 2.11337642, 1.75975399, 1.05668821, 0.87987699, 0.26417205, 0.21996925, 1000.0, 1);"
 		);
 		
-		// Create Mass Table
-//		Log.d(TAG, "Creating Mass Table");
-		db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME[3]+" ("+ 	//	Mass
-			KEY_NAME+" TEXT NOT NULL, "+
-			KEY_MASS[0]+" REAL NOT NULL, "+	//	Milligram
-			KEY_MASS[1]+" REAL NOT NULL, "+	//	Gram
-			KEY_MASS[2]+" REAL NOT NULL, "+	//	Kilogram
-			KEY_MASS[3]+" REAL NOT NULL, "+	//	Pound
-			KEY_MASS[4]+" REAL NOT NULL, "+	//	Ounce
-			KEY_MASS[5]+" REAL NOT NULL, "+	//	Ton(US)
-			KEY_MASS[6]+" REAL NOT NULL, "+	//	Ton(UK)
-			KEY_MASS[7]+" REAL NOT NULL);"	//	MetricTon	
-		);
-
 		// Populate Mass Table
-//		Log.d(TAG, "populating Mass Table");
+		Log.d(TAG, "populating Mass Table");
 		db.execSQL("INSERT INTO "+TABLE_NAME[3]+" ("+
 			KEY_NAME+", "+KEY_MASS[0]+", "+KEY_MASS[1]+", "+KEY_MASS[2]+", "+KEY_MASS[3]+", "+KEY_MASS[4]+", "+KEY_MASS[5]+", "+KEY_MASS[6]+", "+KEY_MASS[7]+") VALUES " +
 			"("+KEY_MASS[0]+", 1, 0.001, 0.000001, 0.00000220462262, 0.0000352739619, 0.00000000110231131, 0.000000000984206528, 0.000000001)," +
@@ -149,6 +128,36 @@ public class DbHelper extends SQLiteOpenHelper{
 			"("+KEY_MASS[6]+", 1016046910, 1016046.91, 1016.04691, 2240, 35840, 1.12, 1, 1.01604691),"+
 			"("+KEY_MASS[7]+", 1000000000, 1000000, 1000, 2204.62262, 35273.9619, 1.10231131, 0.984206528, 1);"
 		);
+		
+/*
+		// Populate Time Table		TODO
+		Log.d(TAG, "populating Time Table");
+		db.execSQL("INSERT INTO "+TABLE_NAME[4]+" ("+
+			KEY_NAME+", "+KEY_TIME[0]+", "+KEY_TIME[1]+", "+KEY_TIME[2]+", "+KEY_TIME[3]+", "+KEY_TIME[4]+", "+KEY_TIME[5]+", "+KEY_TIME[6]+", "+KEY_TIME[7]+") VALUES " +
+			"("+KEY_TIME[0]+", 1, 0.001, 0.000001, 0.00000220462262, 0.0000352739619, 0.00000000110231131, 0.000000000984206528, 0.000000001)," +
+			"("+KEY_TIME[1]+", 1000, 1, 0.001, 0.00220462262, 0.0352739619, 0.000001, 0.000000984206528, 0.000001)," +
+			"("+KEY_TIME[2]+", 1000000, 1000, 1, 2.20462262, 35.2739619, 0.00110231131, 0.000984206528, 0.001)," +
+			"("+KEY_TIME[3]+", 453592.37, 453.59237, 0.45359237, 1, 16, 0.0005, 0.000446428571, 0.00045359237)," +
+			"("+KEY_TIME[4]+", 28349.5231, 28.3495231, 0.0283495231, 0.0625, 1, 0.0000312500, 0.0000279017857, 0.0000283495231)," +
+			"("+KEY_TIME[5]+", 907184740, 907184.74, 907.18474, 2000, 32000, 1, 0.892857143, 0.90718474),"+
+			"("+KEY_TIME[6]+", 1016046910, 1016046.91, 1016.04691, 2240, 35840, 1.12, 1, 1.01604691),"+
+			"("+KEY_TIME[7]+", 1000000000, 1000000, 1000, 2204.62262, 35273.9619, 1.10231131, 0.984206528, 1);"
+		);
+
+		// Populate Area Table		TODO
+		Log.d(TAG, "populating Area Table");
+		db.execSQL("INSERT INTO "+TABLE_NAME[5]+" ("+
+			KEY_NAME+", "+KEY_AREA[0]+", "+KEY_AREA[1]+", "+KEY_AREA[2]+", "+KEY_AREA[3]+", "+KEY_AREA[4]+", "+KEY_AREA[5]+", "+KEY_AREA[6]+", "+KEY_AREA[7]+") VALUES " +
+			"("+KEY_AREA[0]+", 1, 0.001, 0.000001, 0.00000220462262, 0.0000352739619, 0.00000000110231131, 0.000000000984206528, 0.000000001)," +
+			"("+KEY_AREA[1]+", 1000, 1, 0.001, 0.00220462262, 0.0352739619, 0.000001, 0.000000984206528, 0.000001)," +
+			"("+KEY_AREA[2]+", 1000000, 1000, 1, 2.20462262, 35.2739619, 0.00110231131, 0.000984206528, 0.001)," +
+			"("+KEY_AREA[3]+", 453592.37, 453.59237, 0.45359237, 1, 16, 0.0005, 0.000446428571, 0.00045359237)," +
+			"("+KEY_AREA[4]+", 28349.5231, 28.3495231, 0.0283495231, 0.0625, 1, 0.0000312500, 0.0000279017857, 0.0000283495231)," +
+			"("+KEY_AREA[5]+", 907184740, 907184.74, 907.18474, 2000, 32000, 1, 0.892857143, 0.90718474),"+
+			"("+KEY_AREA[6]+", 1016046910, 1016046.91, 1016.04691, 2240, 35840, 1.12, 1, 1.01604691),"+
+			"("+KEY_AREA[7]+", 1000000000, 1000000, 1000, 2204.62262, 35273.9619, 1.10231131, 0.984206528, 1);"
+		);*/
+
 	}// END onCreate()
 	
 	@Override
@@ -167,9 +176,11 @@ public class DbHelper extends SQLiteOpenHelper{
 		Cursor cursor = db.rawQuery("SELECT * FROM "+table+" WHERE name=?", new String[]{from});
         if (cursor != null){
             cursor.moveToFirst();
+            return cursor.getDouble(cursor.getColumnIndex(to));
+        }else{
+        	return 1.0;
         }
         
-        return cursor.getDouble(cursor.getColumnIndex(to));
 	}//	END getConversionRate()	
 }
 
