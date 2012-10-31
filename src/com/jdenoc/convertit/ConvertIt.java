@@ -3,11 +3,12 @@ package com.jdenoc.convertit;
 // GUI:	convert.xml
 //		convert_menu.xml (for menu)
 // Author: Denis O'Connor
-// Last modified: 07/8/12
+// Last modified: 28-OCT-2012
 // Main Conversion file
 // Allows user to convert Mass, Volume, Length, Speed and Temperature
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -49,7 +50,12 @@ public class ConvertIt extends Activity implements OnClickListener{
 //		TAG = "ConvertIt:"+head;				// TESTING
 		
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);		// removes title bar
+		if(SDKVersion.useActionBar()){		
+			ActionBar actionBar = getActionBar();
+			actionBar.setDisplayHomeAsUpEnabled(true);
+		}else{
+			requestWindowFeature(Window.FEATURE_NO_TITLE);		// removes title bar
+		}
 		setContentView(R.layout.convert);
 //		Log.d(TAG, head+" started");		// TESTING
 		
@@ -107,7 +113,7 @@ public class ConvertIt extends Activity implements OnClickListener{
 				new Thread(){
 					public void run(){
 						try{
-							sleep(2250);		// runs for 2.25 secs
+							sleep(2250);		// runs for 2.25 seconds
 						}catch(Exception e){
 //							Log.e(TAG, e.getMessage());		//	TESTING
 						}finally{

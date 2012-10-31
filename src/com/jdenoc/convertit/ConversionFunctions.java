@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // ConversionFunctions.java
 // GUI: n/a
 // Author: Denis O'Connor
-// Last modified: 07/8/12
+// Last modified: 28-OCT-2012
 // Contains functions to allow for conversions
 // Not for Time or Currency Conversions
 
@@ -24,7 +24,7 @@ public class ConversionFunctions {
 	}// END Constructor
 	
 	public double getTemperature(){
-//		Calcultes the temperature
+//		Calculates the temperature
 		final String k = "Kelvin (\u00B0K)";
 		final String c = "Celsius (\u00B0C)";
 		final String f = "Fahrenheit (\u00B0F)";

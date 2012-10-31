@@ -30,6 +30,8 @@ public class Splash extends Activity{
 		setContentView(R.layout.splash);	// displays XML GUI
 //		Log.d(TAG, "Splash started");		//	TESTING
 		
+		SDKVersion.setSDKVersion();			// Makes the SDK Version available for comparison
+		
 		new Handler().postDelayed(new Runnable(){
 			
 			@Override

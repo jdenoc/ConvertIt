@@ -50,12 +50,37 @@
 	<!-- Array for Speed -->
 	<string-array name="speedArray">
 	    <item>m/s</item>	<!-- Meter per Second -->
-		<item>km/h</item>	<!-- Kilometer per Hour -->
+		<item>kph</item>	<!-- Kilometer per Hour -->
 	    <item>mph</item>	<!-- Mile per Hour -->
 	    <item>Knots</item>	<!-- Knots (based on Nautical mile)-->
 	    <item>ft/s</item>	<!-- Feet per Second -->
 	    <item>Mach</item>	<!-- Mach (Speed of sound) -->
 	</string-array>
     
+	<!-- Array for Time -->
+	<string-array name="timeArray">
+	    <item>Nanosecond</item>		<!-- Nanosecond -->
+		<item>Microsecond</item>	<!-- Microsecond -->
+	    <item>Millisecond</item>	<!-- Millisecond -->
+	    <item>Second</item>			<!-- Second -->
+	    <item>Minute</item>			<!-- Minute -->
+	    <item>Hour</item>			<!-- Hour -->
+	    <item>Day</item>			<!-- Day -->
+	    <item>Week</item>			<!-- Week -->
+	    <item>Year</item>			<!-- Year -->
+	    <item>Decade</item>			<!-- Decade -->
+	    <item>Century</item>		<!-- Century -->
+	</string-array>
+	
+	<!-- Array for Area -->
+	<string-array name="areaArray">
+	    <item>KM \u0032</item>		<!-- Square Kilometer -->
+		<item>Hectare</item>		<!-- Hectare -->
+	    <item>M \u0032</item>		<!-- Square Meter -->
+	    <item>Acre</item>			<!-- Acre -->
+	    <item>Yard \u0032</item>	<!-- Square Yard -->
+	    <item>Foot \u0032</item>	<!-- Square Foot -->
+	    <item>Inch \u0032</item>	<!-- Square Inch -->
+	</string-array>
     
 </resources>

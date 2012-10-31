@@ -67,18 +67,34 @@
 		            android:padding="7dp"
 		            android:contentDescription="Icon to access Volume Conversions" />
 			</TableRow>
-			<TableRow
-			    android:gravity="center_horizontal">
-		        <ImageButton 
+
+		    <TableRow android:gravity="center_horizontal" >
+
+		        <ImageButton
 		            android:id="@+id/menuMass"
-		            android:src="@drawable/ic_mass"
-		            android:background="@drawable/button_press"
-		            android:adjustViewBounds="true"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_margin="12dp"
+		            android:adjustViewBounds="true"
+		            android:background="@drawable/button_press"
+		            android:contentDescription="Icon to access Mass (Weigth) Conversions"
 		            android:padding="7dp"
-		            android:contentDescription="Icon to access Mass (Weigth) Conversions" />
+		            android:src="@drawable/ic_mass" />
+
+		        <ImageButton
+		            android:id="@+id/menuTimeZone"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="12dp"
+		            android:adjustViewBounds="true"
+		            android:background="@drawable/button_press"
+		            android:contentDescription="Icon to access Time (Zone) Conversions"
+		            android:padding="7dp"
+		            android:src="@drawable/ic_time" />
+		    </TableRow>
+
+	        <TableRow
+			    android:gravity="center_horizontal">
 		        <ImageButton 
 		            android:id="@+id/menuTime"
 		            android:src="@drawable/ic_time"
@@ -88,7 +104,17 @@
 		            android:layout_height="wrap_content"
 		            android:layout_margin="12dp"
 		            android:padding="7dp"
-		            android:contentDescription="Icon to access Time (Zone) Conversions" />
+		            android:contentDescription="Icon to access Time Conversions" />
+		        <ImageButton 
+		            android:id="@+id/menuArea"
+		            android:src="@drawable/ic_time"
+		            android:background="@drawable/button_press"
+		            android:adjustViewBounds="true"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="12dp"
+		            android:padding="7dp"
+		            android:contentDescription="Icon to access Area Conversions" />
 	        </TableRow>
 	        <TableRow
 			    android:gravity="center_horizontal">
