@@ -89,6 +89,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ColorConvertIt_old"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.jdenoc.convertit.COLOR_OLD" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!-- END Main Activities -->
         <!-- Foreground Activities -->
         <activity

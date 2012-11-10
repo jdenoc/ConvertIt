@@ -4,19 +4,23 @@ package com.jdenoc.convertit;
 //		expanded_group_layout.xml	(for group list title)
 //		expanded_child_layout.xml	(for expanded list display)
 // Author: Denis O'Connor
-// Last Modified: 04/8/12
+// Last Modified: 01-NOV-2012
 // Displays an expandable list that will allow the user to search through the help sections for each conversion
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.ExpandableListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 //import android.util.Log;		//	TESTING
 import android.view.View;
 import android.view.Window;
@@ -29,10 +33,17 @@ public class Help extends ExpandableListActivity {
 	private final String C_KEY = "Topic Details";
 //	private final String TAG = "HELP";		//	TESTING
 	
+	@TargetApi(11)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);		// removes title bar
+		if(SDKVersion.useActionBar()){		
+			ActionBar actionBar = getActionBar();
+			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setTitle(getResources().getString(R.string.app_name)+" | Help");
+		}else{
+			requestWindowFeature(Window.FEATURE_NO_TITLE);		// removes title bar
+		}
 		setContentView(R.layout.help);
 		
 		SimpleExpandableListAdapter expListAdapter = new SimpleExpandableListAdapter(
@@ -176,8 +187,8 @@ public class Help extends ExpandableListActivity {
         mass.add(HashMapMaker(C_KEY, getResources().getString(R.string.decDefault)));
         result.add(mass);	// add mass help to overall list
         
-        time.add(HashMapMaker(C_KEY, getResources().getString(R.string.timeHelp0)));
-        time.add(HashMapMaker(C_KEY, getResources().getString(R.string.timeHelp1)));
+        time.add(HashMapMaker(C_KEY, getResources().getString(R.string.timeZoneHelp0)));
+        time.add(HashMapMaker(C_KEY, getResources().getString(R.string.timeZoneHelp1)));
         time.add(HashMapMaker(C_KEY, getResources().getString(R.string.tap)));		// interactive (group 5, position 2) 
         result.add(time);	// add time help to overall list
         
@@ -194,4 +205,32 @@ public class Help extends ExpandableListActivity {
         
         return result;
     }//	END createChildList()
+	
+//	Specifically for phones. When press MENU button on phones 
+	public boolean onCreateOptionsMenu(android.view.Menu menu){		// Should be (Menu menu), but Menu is the name of the class, so there is a conflict error
+		super.onCreateOptionsMenu(menu);
+		MenuInflater awesome = getMenuInflater();
+		awesome.inflate(R.menu.help_menu, menu);
+//		Log.d(TAG, "'MENU' button pressed");		// TESTING
+		return true;
+	}// END onCreateOptionsMenu()
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()){
+		case android.R.id.home:
+//			Returns user back to main activity
+			finish();
+			startActivity(new Intent("com.jdenoc.convertit.MAIN"));
+			return true;
+		
+		case R.id.menuAbout:
+//			Displays About.java file
+			startActivity(new Intent("com.jdenoc.convertit.ABOUT"));
+			return true;			
+		}
+		return false;
+	}// END onOptionsItemSelected()
+//END Menu Button setup
+
 }

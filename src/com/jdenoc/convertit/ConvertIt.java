@@ -8,6 +8,7 @@ package com.jdenoc.convertit;
 // Allows user to convert Mass, Volume, Length, Speed and Temperature
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -41,6 +42,7 @@ public class ConvertIt extends Activity implements OnClickListener{
 	private int spinnerArray;		// to contain the id of the array for the spinners 
 //	private String TAG;				// TESTING 
 	
+	@TargetApi(11)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -53,6 +55,7 @@ public class ConvertIt extends Activity implements OnClickListener{
 		if(SDKVersion.useActionBar()){		
 			ActionBar actionBar = getActionBar();
 			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setTitle(getResources().getString(R.string.app_name)+" | "+head);
 		}else{
 			requestWindowFeature(Window.FEATURE_NO_TITLE);		// removes title bar
 		}
@@ -163,6 +166,14 @@ public class ConvertIt extends Activity implements OnClickListener{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()){
+		case android.R.id.home:
+//			Returns User back to the main activity
+			finish();
+			Intent intent = new Intent("com.jdenoc.convertit.MAIN");
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
+		
 		case R.id.menuAbout:
 //			Displays About.java file
 			startActivity(new Intent("com.jdenoc.convertit.ABOUT"));

@@ -4,7 +4,7 @@ package com.jdenoc.convertit;
 //		fadeout.xml		(for animation)
 //		fadein.xml		(for animation)
 // Author: Denis O'Connor
-// Last modified: 28/6/11
+// Last modified: 31-OCT-2012
 // Displays a splash screen for 1.5 seconds, fades out and then displays Main.java
 
 import android.app.Activity;
@@ -30,12 +30,15 @@ public class Splash extends Activity{
 		setContentView(R.layout.splash);	// displays XML GUI
 //		Log.d(TAG, "Splash started");		//	TESTING
 		
-		SDKVersion.setSDKVersion();			// Makes the SDK Version available for comparison
+		
 		
 		new Handler().postDelayed(new Runnable(){
 			
 			@Override
 			public void run() {
+				// Makes the SDK Version available for comparison
+				SDKVersion.setSDKVersion();			
+				
 				// Create an intent that will start the main activity. 
 				startActivity(new Intent("com.jdenoc.convertit.MAIN"));
                     

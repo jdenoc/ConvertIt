@@ -3,7 +3,7 @@ package com.jdenoc.convertit;
 // GUI: main.xml
 //		main_menu.xml	(for menu)
 // Author: Denis O'Connor
-// Last modified: 28-OCT-2012
+// Last modified: 01-NOV-2012
 // Main menu/Activity
 // User comes to this after Splash has completed.
 // User can make a selection as to which Conversion to perform 
@@ -24,12 +24,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Main extends Activity implements OnClickListener{
 	
-	private ImageButton currency, length, volume, mass, timezone, speed, color, temp, time, area;
+	private ImageButton currency, length, volume, mass, speed, color, temp, time;
+	private Button timezone, area;		// TODO - Create images for these and put them back into Image Button List. Update XML accordingly
 	private static final String TAG="Main";		// TESTING
 	
 	@TargetApi(11)
@@ -39,7 +41,7 @@ public class Main extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		if(SDKVersion.useActionBar()){		
 			ActionBar actionBar = getActionBar();
-			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setDisplayHomeAsUpEnabled(false);
 		}else{
 			requestWindowFeature(Window.FEATURE_NO_TITLE);		// removes title bar
 		}
@@ -50,12 +52,15 @@ public class Main extends Activity implements OnClickListener{
 		length = (ImageButton) findViewById(R.id.menuLen);
 		volume = (ImageButton) findViewById(R.id.menuVol);
 		mass = (ImageButton) findViewById(R.id.menuMass);
-		timezone = (ImageButton) findViewById(R.id.menuTimeZone);
+//		timezone = (ImageButton) findViewById(R.id.menuTimeZone);
+		timezone = (Button) findViewById(R.id.menuTimeZone);
 		temp = (ImageButton) findViewById(R.id.menuTemp);
 		speed = (ImageButton) findViewById(R.id.menuSpeed);
 		color = (ImageButton) findViewById(R.id.menuColor);
-		area = (ImageButton) findViewById(R.id.menuArea);
+//		area = (ImageButton) findViewById(R.id.menuArea);
+		area = (Button) findViewById(R.id.menuArea);
 		time = (ImageButton) findViewById(R.id.menuTime);
+		
 		
 		// set click listeners for buttons
 		currency.setOnClickListener(this);
@@ -141,13 +146,13 @@ public class Main extends Activity implements OnClickListener{
 		case R.id.menuArea:
 			// when user touches the Time button
 			Log.d(TAG, "Area Selected");		// TESTING
-			runActivity("Volume", R.array.volumeArray, data, file, true);
+			runActivity("Area", R.array.areaArray, data, file, true);
 			break;
 			
 		case R.id.menuTime:
 			// when user touches the Time button
 			Log.d(TAG, "Time Selected");		// TESTING
-			runActivity("Volume", R.array.volumeArray, data, file, true);
+			runActivity("Time", R.array.timeArray, data, file, true);
 			break;
 			
 		case R.id.menuTemp:
@@ -165,7 +170,11 @@ public class Main extends Activity implements OnClickListener{
 		case R.id.menuColor:
 			// when user touches the Time button
 			Log.d(TAG, "Color Selected");		// TESTING
-			startActivity(new Intent("com.jdenoc.convertit.COLOR"));
+			if(SDKVersion.useActionBar()){		
+				startActivity(new Intent("com.jdenoc.convertit.COLOR"));		// Actionbar Tabs. For Andrio >= 3.0 (Honeycomb)
+			}else{
+				startActivity(new Intent("com.jdenoc.convertit.COLOR_OLD"));	// Depricated Tab Widget. For Android < 3.0 (Honeycomb)
+			}
 			break;
 		}
 	}// END onClick()

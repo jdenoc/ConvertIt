@@ -77,9 +77,9 @@
 		From here enter a decimal value into the input box and select the unit you wish to convert from and the unit you wish to convert to.\n\n
 		You can also change the amount of decimal places that your output will display. You can do this by Pressing the \"MENU\" button of your device, then tap Settings. When the Settings Menu opens, tap \"No. of Decimal Places\", or by tapping \"TAP HERE\" below.</string>
 
-    <!-- HELP Strings (Time) -->
-    <string name="timeHelp0">Need help figuring out Time conversions? Then you\'ve come to the right place. ^_^</string>
-    <string name="timeHelp1">To gain access to the Time function, tap on the \"Time\" icon on the main screen.\n
+    <!-- HELP Strings (Time Zone) -->
+    <string name="timeZoneHelp0">Need help figuring out Time conversions? Then you\'ve come to the right place. ^_^</string>
+    <string name="timeZoneHelp1">To gain access to the Time function, tap on the \"Time\" icon on the main screen.\n
 		From here you will given the choice of two methods (Tabs) of conversion:\n
 		\t\t\u2022 Location\n
 		\t\t\u2022 Time Zone\n\n
@@ -101,5 +101,11 @@
 		\t\u2022 \"Knots\" are based on Nautical Miles\n
 		\t\u2022 \"ft/s\" = Feet per Second\n
 		\t\u2022 \"Mach\" is a measurement for the Speed of sound</string>
+		
+    <!-- HELP STRINGS (Area) -->
+    <string name="areaHelp0"></string>
+    
+    <!-- HELP STRINGS (Time) -->
+    <string name="timeHelp0"></string>
 
 </resources>

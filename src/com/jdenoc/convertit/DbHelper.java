@@ -2,7 +2,7 @@ package com.jdenoc.convertit;
 // DbHelper.java
 // GUI: N/A
 // Author: Denis O'Connor
-// Last Modified: 29-OCT-2012
+// Last Modified: 31-OCT-2012
 // SRC:	http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
 // SQLite Database for Length, Mass, Speed, Volume, Time and Area Conversions
 
@@ -10,7 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;		// TESTING ONLY
+//import android.util.Log;		// TESTING ONLY
 
 	
 public class DbHelper extends SQLiteOpenHelper{
@@ -27,7 +27,7 @@ public class DbHelper extends SQLiteOpenHelper{
 	private static final String[] TABLE_NAME = {"Speed", "Length", "Volume", "Mass", "Time", "Area"};
 	private static final int DB_VER = 1;
 	
-	private static final String TAG = "SQLite";
+//	private static final String TAG = "SQLite";
 	
 	public DbHelper(Context context) {
 		super(context, DB_NAME, null, DB_VER);
@@ -72,7 +72,7 @@ public class DbHelper extends SQLiteOpenHelper{
 		}
 		
 		// Populate Speed Table
-		Log.d(TAG, "Populating Speed Table");		// TESTING
+//		Log.d(TAG, "Populating Speed Table");		// TESTING
 		db.execSQL("INSERT INTO "+TABLE_NAME[0]+" VALUES ("+KEY_SPEED[0]+", 1, 3.6, 2.236926, 1.943844, 3.280840, 1224.7752);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[0]+" VALUES ("+KEY_SPEED[1]+", 0.277778, 1, 2.236926, 0.0539957, 0.911344, 1224.7752);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[0]+" VALUES ("+KEY_SPEED[2]+", 0.44704, 1.609344, 1, 0.868976, 1.466667, 0.0013);");
@@ -81,7 +81,7 @@ public class DbHelper extends SQLiteOpenHelper{
 		db.execSQL("INSERT INTO "+TABLE_NAME[0]+" VALUES ("+KEY_SPEED[5]+", 1224.7752, 1224.7752, 761.1797, 1224.7752, 1116.192, 1);");
 
 		// Populate Length Table
-		Log.d(TAG, "Populating Length Table");		// TESTING
+//		Log.d(TAG, "Populating Length Table");		// TESTING
 		db.execSQL("INSERT INTO "+TABLE_NAME[1]+" VALUES ("+KEY_LEN[0]+", 1, 0.0833333333, 0.0277777778, 0.0000157828283, 25.4, 2.54, 0.0254, 0.0000254, 0.0000137149028);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[1]+" VALUES ("+KEY_LEN[1]+", 12, 1, 0.333333333, 0.000189393939, 304.8, 30.48, 0.3048, 0.0003048, 0.000164578834);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[1]+" VALUES ("+KEY_LEN[2]+", 36, 3, 1, 0.000568181818, 914.4, 91.44, 0.9144, 0.0009144, 0.000493736501);");
@@ -93,7 +93,7 @@ public class DbHelper extends SQLiteOpenHelper{
 		db.execSQL("INSERT INTO "+TABLE_NAME[1]+" VALUES ("+KEY_LEN[8]+", 72913.3858, 6076.11549, 2025.37183, 1.15077945, 1852000, 185200, 1852, 1.85200, 1);");
 
 		// Populate Volume Table
-		Log.d(TAG, "Populating Volume Table");		// TESTING
+//		Log.d(TAG, "Populating Volume Table");		// TESTING
 		db.execSQL("INSERT INTO "+TABLE_NAME[2]+" VALUES ("+KEY_VOL[0]+", 1, 1.04084273, 0.0625, 0.05204214, 0.03125, 0.02602134, 0.0078125, 0.00650527, 29.57352956, 0.02957353);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[2]+" VALUES ("+KEY_VOL[1]+", 0.96075994, 1, 0.06004750, 0.05, 0.03002375, 0.025, 0.00750594, 0.00625, 28.4130625, 0.028413063);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[2]+" VALUES ("+KEY_VOL[2]+", 16, 16.65348370, 1, 0.83267418, 0.5, 0.41633709,  0.125, 0.15011874, 473.176473, 0.47317647);");
@@ -106,7 +106,7 @@ public class DbHelper extends SQLiteOpenHelper{
 		db.execSQL("INSERT INTO "+TABLE_NAME[2]+" VALUES ("+KEY_VOL[9]+", 33.8140227, 35.19507973, 2.11337642, 1.75975399, 1.05668821, 0.87987699, 0.26417205, 0.21996925, 1000.0, 1);");
 		
 		// Populate Mass Table
-		Log.d(TAG, "populating Mass Table");		// TESTING
+//		Log.d(TAG, "populating Mass Table");		// TESTING
 		db.execSQL("INSERT INTO "+TABLE_NAME[3]+" VALUES ("+KEY_MASS[0]+", 1, 0.001, 0.000001, 0.00000220462262, 0.0000352739619, 0.00000000110231131, 0.000000000984206528, 0.000000001);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[3]+" VALUES ("+KEY_MASS[1]+", 1000, 1, 0.001, 0.00220462262, 0.0352739619, 0.000001, 0.000000984206528, 0.000001);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[3]+" VALUES ("+KEY_MASS[2]+", 1000000, 1000, 1, 2.20462262, 35.2739619, 0.00110231131, 0.000984206528, 0.001);");
@@ -117,7 +117,7 @@ public class DbHelper extends SQLiteOpenHelper{
 		db.execSQL("INSERT INTO "+TABLE_NAME[3]+" VALUES ("+KEY_MASS[7]+", 1000000000, 1000000, 1000, 2204.62262, 35273.9619, 1.10231131, 0.984206528, 1);");
 
 		// Populate Time Table
-		Log.d(TAG, "populating Time Table");		// TESTING
+//		Log.d(TAG, "populating Time Table");		// TESTING
 		db.execSQL("INSERT INTO "+TABLE_NAME[4]+" VALUES ("+KEY_TIME[0]+", 1, 0.001, 0.000001, 0.000000001, 0.000000000016667, 0.00000000000027778, 0.000000000000011574, 0.0000000000000016534, 0.000000000000000031689, 0.0000000000000000031689, 0.00000000000000000031689);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[4]+" VALUES ("+KEY_TIME[1]+", 1000, 1, 0.001, 0.000001, 0.000000016667, 0.00000000027778, 0.000000000011574, 0.0000000000016534, 0.000000000000031689, 0.0000000000000031689, 0.0000000000000031689);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[4]+" VALUES ("+KEY_TIME[2]+", 1000000, 1000, 1, 0.001, 0.000016667, 0.00000027778, 0.000000011574, 0.0000000016534, 0.000000000031689, 0.0000000000031689, 0.00000000000031689);");
@@ -131,7 +131,7 @@ public class DbHelper extends SQLiteOpenHelper{
 		db.execSQL("INSERT INTO "+TABLE_NAME[4]+" VALUES ("+KEY_TIME[10]+",3156000000000000000, 3156000000000000, 3156000000000, 3156000000, 52594900, 876581, 36525, 5200, 100, 10, 1);");
 		
 		// Populate Area Table
-		Log.d(TAG, "populating Area Table");		// TESTING
+//		Log.d(TAG, "populating Area Table");		// TESTING
 		db.execSQL("INSERT INTO "+TABLE_NAME[5]+" VALUES ("+KEY_AREA[0]+", 1, 100, 1000000, 0.386102, 247.105, 1195990, 10763900, 1550000000);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[5]+" VALUES ("+KEY_AREA[1]+", 0.01, 1, 10000, 0.00386102, 2.47105, 11959.9, 107639, 15500000);");
 		db.execSQL("INSERT INTO "+TABLE_NAME[5]+" VALUES ("+KEY_AREA[2]+", 1000000, 0.0001, 1, 0.0000003861, 	0.000247105, 1.19599, 10.7639, 	1550);");
